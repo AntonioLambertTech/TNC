@@ -31,9 +31,7 @@ Create a new Google Sheet with two tabs.
 
 - `Section` must match one of the `label` values in `js/config.js` exactly (not case sensitive), for example `Party` or `Graduation`.
 - `Sizes` and `SizeCounts` are comma separated and line up in order, for example `S,M,L,XL` and `8,12,12,4`.
-- `ImageURL` needs a direct link to a photo. The easiest way: upload the photo to a Google Drive folder, share it as "Anyone with the link", then use a link in this format so it loads as an actual image instead of a Drive page:
-  `https://drive.google.com/uc?export=view&id=THE_FILE_ID`
-  (the file ID is the long string in the Drive share link).
+- `ImageURL` needs a link to a photo. The simplest way: upload the photo to a Google Drive folder, right click it, choose Share, set it to "Anyone with the link" can view, then copy that share link straight into the sheet. You do not need to reformat it by hand, the website automatically converts a normal Drive share link (the kind that ends in `/view?usp=sharing`) into a working image link.
 
 **Orders** tab, with these exact column headers in row 1:
 
