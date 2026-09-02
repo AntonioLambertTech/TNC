@@ -40,12 +40,40 @@ function rowToItem(row) {
     itemId: (row.ItemID || "").trim(),
     name: (row.Name || "").trim(),
     section: (row.Section || "").trim(),
-    price: parseFloat(row.Price) || 0,
-    imageUrl: (row.ImageURL || "").trim(),
+    price: parsePrice(row.Price),
+    imageUrl: normalizeImageUrl((row.ImageURL || "").trim()),
     inventoryCount: row.InventoryCount === "" ? null : Number(row.InventoryCount),
     sizes: sizes,
     description: (row.Description || "").trim()
   };
+}
+
+/* Accepts "5", "$5.00", "5,000.00", etc. and returns a plain number. */
+function parsePrice(value) {
+  if (!value) return 0;
+  const cleaned = String(value).replace(/[^0-9.]/g, "");
+  const num = parseFloat(cleaned);
+  return isNaN(num) ? 0 : num;
+}
+
+/* Turns a normal Google Drive share link into a link that loads as a
+   raw image instead of a Drive preview page. Handles the two common
+   share link formats; if the link doesn't match Drive at all (e.g. a
+   direct photo host link), it's left untouched. */
+function normalizeImageUrl(url) {
+  if (!url) return url;
+
+  const fileMatch = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (fileMatch) {
+    return "https://drive.google.com/uc?export=view&id=" + fileMatch[1];
+  }
+
+  const openMatch = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+  if (openMatch) {
+    return "https://drive.google.com/uc?export=view&id=" + openMatch[1];
+  }
+
+  return url;
 }
 
 function splitList(value) {
