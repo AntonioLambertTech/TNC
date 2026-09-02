@@ -65,12 +65,17 @@ function normalizeImageUrl(url) {
 
   const fileMatch = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
   if (fileMatch) {
-    return "https://drive.google.com/uc?export=view&id=" + fileMatch[1];
+    return "https://drive.google.com/thumbnail?id=" + fileMatch[1] + "&sz=w1000";
   }
 
   const openMatch = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
   if (openMatch) {
-    return "https://drive.google.com/uc?export=view&id=" + openMatch[1];
+    return "https://drive.google.com/thumbnail?id=" + openMatch[1] + "&sz=w1000";
+  }
+
+  const ucMatch = url.match(/drive\.google\.com\/uc\?(?:export=view&)?id=([^&]+)/);
+  if (ucMatch) {
+    return "https://drive.google.com/thumbnail?id=" + ucMatch[1] + "&sz=w1000";
   }
 
   return url;
