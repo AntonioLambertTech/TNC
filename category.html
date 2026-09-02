@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Company &middot; Shop</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="images/logo.png" alt="Company logo" onerror="this.style.display='none'">
+    <span class="brand-name" id="company-name-topbar">Your Company</span>
+  </a>
+  <div class="topbar-right">
+    <ul class="nav-links">
+      <li class="nav-item" id="shop-dropdown">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Shop</button>
+        <div class="dropdown" id="shop-dropdown-list"></div>
+      </li>
+      <li class="nav-item"><a href="index.html#footer-contact">Contact</a></li>
+    </ul>
+    <button class="cart-button" id="cart-toggle">Cart <span id="cart-count">0</span></button>
+  </div>
+</header>
+
+<div class="category-header">
+  <a class="back-link" href="index.html">Back to home</a>
+  <h1 id="category-title">Section</h1>
+</div>
+
+<div class="category-grid" id="category-grid"></div>
+
+<div id="cart-overlay"></div>
+<aside id="cart-drawer">
+  <div class="cart-drawer-header">
+    <h2>Your cart</h2>
+    <button id="cart-close" aria-label="Close cart">&times;</button>
+  </div>
+  <div id="cart-items"></div>
+  <div class="cart-drawer-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cart-total">$0.00</span></div>
+    <button id="checkout-btn" disabled>Checkout</button>
+  </div>
+</aside>
+
+<div id="checkout-overlay"></div>
+<div id="checkout-modal">
+  <div class="checkout-modal-header">
+    <h2>Checkout</h2>
+    <button id="checkout-close" aria-label="Close checkout">&times;</button>
+  </div>
+  <form id="checkout-form">
+    <label for="customer-name">Full name</label>
+    <input id="customer-name" required>
+
+    <label for="customer-email">Email</label>
+    <input id="customer-email" type="email" required>
+
+    <label for="customer-phone">Phone</label>
+    <input id="customer-phone" type="tel" required>
+
+    <label for="customer-address">Shipping address</label>
+    <textarea id="customer-address" rows="3" required></textarea>
+
+    <label for="design-upload">Have a custom design? Upload it here</label>
+    <input id="design-upload" type="file" accept="image/*">
+    <p class="field-hint">Optional. Attach an image so we know exactly what to print on your shirt.</p>
+
+    <button type="submit" class="primary-btn" style="width:100%; margin-top:20px;">Continue to payment</button>
+    <p id="checkout-status" class="checkout-status"></p>
+  </form>
+</div>
+
+<footer id="footer-contact">
+  <span class="footer-name" id="company-name-footer">Your Company</span>
+  <span id="company-phone-footer">(555) 555-5555</span>
+  <span id="company-email-footer">orders@yourcompany.com</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+<script>
+  document.getElementById("company-name-topbar").textContent = COMPANY.name;
+  document.getElementById("company-name-footer").textContent = COMPANY.name;
+  document.getElementById("company-phone-footer").textContent = COMPANY.phone;
+  document.getElementById("company-email-footer").textContent = COMPANY.email;
+
+  const shopList = document.getElementById("shop-dropdown-list");
+  SECTIONS.forEach(function (section) {
+    const link = document.createElement("a");
+    link.href = "category.html?section=" + encodeURIComponent(section.id);
+    link.textContent = section.label;
+    shopList.appendChild(link);
+  });
+
+  const shopDropdown = document.getElementById("shop-dropdown");
+  shopDropdown.querySelector("button").addEventListener("click", function () {
+    shopDropdown.classList.toggle("open");
+  });
+  document.addEventListener("click", function (e) {
+    if (!shopDropdown.contains(e.target)) shopDropdown.classList.remove("open");
+  });
+
+  loadInventory().then(renderCategoryPage);
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order received</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="images/logo.png" alt="Company logo" onerror="this.style.display='none'">
+    <span class="brand-name" id="company-name-topbar">Your Company</span>
+  </a>
+</header>
+
+<div class="hero" style="padding: 100px 28px;">
+  <div class="hero-inner">
+    <span class="hero-accent"></span>
+    <h1>Thanks, your order is in.</h1>
+    <p>We received your payment and your order. A confirmation email is on its way, and you'll hear from us if we have any questions about your design.</p>
+    <a href="index.html" class="primary-btn" style="display:inline-block; margin-top:24px; text-decoration:none;">Back to shop</a>
+  </div>
+</div>
+
+<footer id="footer-contact">
+  <span class="footer-name" id="company-name-footer">Your Company</span>
+  <span id="company-phone-footer">(555) 555-5555</span>
+  <span id="company-email-footer">orders@yourcompany.com</span>
+</footer>
+
+<script src="js/config.js"></script>
+<script>
+  document.getElementById("company-name-topbar").textContent = COMPANY.name;
+  document.getElementById("company-name-footer").textContent = COMPANY.name;
+  document.getElementById("company-phone-footer").textContent = COMPANY.phone;
+  document.getElementById("company-email-footer").textContent = COMPANY.email;
+</script>
+</body>
+</html>
