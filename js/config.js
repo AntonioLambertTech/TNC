@@ -30,7 +30,7 @@ const COMPANY = {
 const INVENTORY_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS8Bh4h40Cc4N_q6M-jnzJFnfvjpo9qGfq1_i1Eom7WuSOuFo4SVFdXUjag3EtIUYGOMnm8GEcnCWMo/pub?gid=0&single=true&output=csv";
 
 /* Paste the deployed Apps Script Web App URL here. See README.md. */
-const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyv3bE0YLK-jJolIWRflStq2hSZrB7odiwiOLX5qJbcAiPTH2BmULWY1IijJtG8RaAIPQ/exec";
 
 /* How many items to show per homepage section before "see all". */
 const ITEMS_PER_HOMEPAGE_SECTION = 10;
