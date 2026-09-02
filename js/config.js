@@ -19,10 +19,10 @@ const SECTIONS = [
 
 /* Company info shown in the top bar and footer. */
 const COMPANY = {
-  name: "Your Company",
-  phone: "(555) 555-5555",
-  email: "orders@yourcompany.com",
-  logoUrl: "images/logo.png"
+  name: "ANC Custom Designs",
+  phone: "(251) 554-5606",
+  email: "tlam508@gmail.com",
+  logoUrl: "images/ANC.png"
 };
 
 /* Paste the "Publish to web" CSV link for the Inventory tab of your
