@@ -27,7 +27,7 @@ const COMPANY = {
 
 /* Paste the "Publish to web" CSV link for the Inventory tab of your
    Google Sheet here. See README.md for how to get this link. */
-const INVENTORY_CSV_URL = "PASTE_YOUR_PUBLISHED_INVENTORY_CSV_LINK_HERE";
+const INVENTORY_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS8Bh4h40Cc4N_q6M-jnzJFnfvjpo9qGfq1_i1Eom7WuSOuFo4SVFdXUjag3EtIUYGOMnm8GEcnCWMo/pub?gid=0&single=true&output=csv";
 
 /* Paste the deployed Apps Script Web App URL here. See README.md. */
 const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
